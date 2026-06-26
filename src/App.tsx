@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, ShoppingBag, Truck, Thermometer, ShieldCheck, RefreshCw, X, ArrowRight, ExternalLink, Instagram, Phone } from 'lucide-react';
+import { CheckCircle2, ShoppingBag, Truck, Thermometer, ShieldCheck, RefreshCw, X, ArrowRight, ExternalLink, Instagram, Phone, WifiOff } from 'lucide-react';
 
 import Header from './components/Header';
 import ShopAll from './components/ShopAll';
@@ -26,6 +26,25 @@ export default function App() {
   const [selectedNutritionProductId, setSelectedNutritionProductId] = useState<string | null>(null);
   const [isAdminView, setIsAdminView] = useState(false);
   const [user, setUser] = useState<any>(null);
+  const [isOffline, setIsOffline] = useState(!navigator.onLine);
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  React.useEffect(() => {
+    const handleOnline = () => {
+      setIsOffline(false);
+      setIsSyncing(true);
+      setTimeout(() => setIsSyncing(false), 2000);
+    };
+    const handleOffline = () => setIsOffline(true);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
 
   React.useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((u) => {
@@ -125,6 +144,30 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#F5F5F5] flex flex-col font-sans antialiased overflow-x-hidden selection:bg-[#FF3E00] selection:text-white">
       
+      {/* Offline/Syncing Banner */}
+      <AnimatePresence>
+        {isOffline && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="bg-[#FF3E00] text-white text-xs font-mono uppercase tracking-widest font-bold text-center py-2 flex items-center justify-center gap-2"
+          >
+            <WifiOff className="w-3.5 h-3.5" /> Offline Mode — Changes will sync when reconnected
+          </motion.div>
+        )}
+        {isSyncing && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="bg-emerald-500 text-white text-xs font-mono uppercase tracking-widest font-bold text-center py-2 flex items-center justify-center gap-2"
+          >
+            <RefreshCw className="w-3.5 h-3.5 animate-spin" /> Syncing Offline Data...
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* 1. Brand Navigation Header */}
       <Header
         currentTab={currentTab}

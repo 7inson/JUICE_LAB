@@ -84,6 +84,10 @@ export default function AccountDashboard({ onLogout }: { onLogout: () => void })
               <h3 className="font-mono text-blue-500 uppercase tracking-widest font-bold mb-4">Orders, Sales & CRM</h3>
               <p className="text-stone-400 text-sm">Process incoming orders, view sales reports, and manage contact form leads.</p>
             </div>
+            <div className="bg-[#121212] border border-white/10 p-6">
+              <h3 className="font-mono text-purple-500 uppercase tracking-widest font-bold mb-4">Offline Sync & Reports</h3>
+              <p className="text-stone-400 text-sm">Synchronize locally cached data and generate offline activity reports.</p>
+            </div>
           </div>
         )}
       </div>
