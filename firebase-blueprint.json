@@ -1,0 +1,49 @@
+{
+  "collections": [
+    {
+      "name": "users",
+      "description": "User profiles and roles.",
+      "fields": [
+        { "name": "email", "type": "string" },
+        { "name": "role", "type": "string", "description": "'admin', 'employee', or 'customer'" },
+        { "name": "createdAt", "type": "timestamp" }
+      ],
+      "rules": {
+        "read": "request.auth != null && (request.auth.uid == id || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'employee'])",
+        "write": "request.auth != null && (request.auth.uid == id || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')"
+      }
+    },
+    {
+      "name": "products",
+      "description": "Store products.",
+      "fields": [
+        { "name": "name", "type": "string" },
+        { "name": "description", "type": "string" },
+        { "name": "price", "type": "number" },
+        { "name": "stock", "type": "number" },
+        { "name": "image", "type": "string" },
+        { "name": "category", "type": "string" },
+        { "name": "createdAt", "type": "timestamp" }
+      ],
+      "rules": {
+        "read": "true",
+        "write": "request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'employee']"
+      }
+    },
+    {
+      "name": "orders",
+      "description": "Customer orders.",
+      "fields": [
+        { "name": "userId", "type": "string" },
+        { "name": "items", "type": "array" },
+        { "name": "total", "type": "number" },
+        { "name": "status", "type": "string" },
+        { "name": "createdAt", "type": "timestamp" }
+      ],
+      "rules": {
+        "read": "request.auth != null && (resource.data.userId == request.auth.uid || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'employee'])",
+        "write": "request.auth != null"
+      }
+    }
+  ]
+}

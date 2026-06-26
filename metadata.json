@@ -1,0 +1,6 @@
+{
+  "name": "Juice Lab",
+  "description": "A premium D2C showcase for 100% pure cold-pressed juices, featuring interactive nutrition dashboards, vertical sourcing journey, custom subscription plans, and flavor profiles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
