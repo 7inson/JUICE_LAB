@@ -70,8 +70,9 @@ export default function ShopAll({ onNavigate, onAddToCart, onOpenNutrition }: Sh
             }}
             className="absolute inset-0 flex items-center justify-center select-none pointer-events-none overflow-hidden z-0"
           >
-            <span className="text-[14vw] font-display font-black text-white/[0.03] uppercase tracking-[0.1em] whitespace-nowrap leading-none">
-              JUICE LAB
+            <span className="text-[15vw] sm:text-[10vw] md:text-[8vw] lg:text-[100px] xl:text-[120px] font-display font-black text-white/[0.03] uppercase tracking-[0.05em] leading-[0.85] text-center max-w-full px-4 flex flex-col sm:flex-row sm:gap-6 items-center justify-center">
+              <span>JUICE</span>
+              <span>LAB</span>
             </span>
           </div>
 

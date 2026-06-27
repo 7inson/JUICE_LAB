@@ -119,7 +119,7 @@ export default function OurStory({ onAddToCart, onOpenCart }: OurStoryProps) {
         <span className="text-xs font-mono text-orange-600 uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5">
           <Heart className="w-3.5 h-3.5 animate-pulse" /> Squeezing Since 2018
         </span>
-        <h1 className="font-serif font-semibold text-3xl sm:text-4.5xl lg:text-5xl tracking-tight text-stone-900 leading-tight">
+        <h1 className="font-serif font-semibold text-3xl sm:text-4.5xl lg:text-5xl tracking-tight text-[#705627] leading-tight">
           Born in Indore, India, <br />
           <span className="italic font-normal text-stone-500">Pressed for the World</span>
         </h1>

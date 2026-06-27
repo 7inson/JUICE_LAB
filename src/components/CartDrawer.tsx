@@ -129,6 +129,10 @@ export default function CartDrawer({
     setTimeout(() => {
       setIsSubmitting(false);
       const generatedOrderId = `JL-${Math.floor(100000 + Math.random() * 900000)}`;
+      
+      // Email Service Placeholder for Automated Order Confirmation
+      console.log(`[Email Service] Sending automated order confirmation email to ${shippingForm.email} for order ${generatedOrderId}...`);
+      
       clearCart();
       setCheckoutStep('cart');
       setAppliedDiscount(null);

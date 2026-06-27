@@ -454,6 +454,7 @@ export default function App() {
       <AnimatePresence>
         {showBackToTop && (
           <motion.button
+            id="back-to-top-btn"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}

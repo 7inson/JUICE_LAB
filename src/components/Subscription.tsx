@@ -107,7 +107,7 @@ export default function Subscription({ onAddSubscriptionToCart, onOpenCart }: Su
       <section id="choose-plan" className="max-w-7xl mx-auto px-6 scroll-mt-24">
         <div className="text-center space-y-2 mb-12">
           <span className="text-xs font-mono text-orange-600 uppercase tracking-widest font-semibold">Flexible Options</span>
-          <h2 className="text-3xl font-display font-semibold tracking-tight text-stone-900">
+          <h2 className="text-3xl font-display font-semibold tracking-tight bg-[#000000] text-[#ada295]">
             Choose Your Rhythm
           </h2>
           <p className="text-stone-500 text-sm max-w-md mx-auto">
