@@ -26,7 +26,7 @@ export default function App() {
   const [selectedNutritionProductId, setSelectedNutritionProductId] = useState<string | null>(null);
   const [isAdminView, setIsAdminView] = useState(false);
   const [user, setUser] = useState<any>(null);
-  const [isOffline, setIsOffline] = useState(!navigator.onLine);
+  const [isOffline, setIsOffline] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
 
   React.useEffect(() => {
@@ -163,7 +163,7 @@ export default function App() {
             exit={{ height: 0, opacity: 0 }}
             className="bg-emerald-500 text-white text-xs font-mono uppercase tracking-widest font-bold text-center py-2 flex items-center justify-center gap-2"
           >
-            <RefreshCw className="w-3.5 h-3.5 animate-spin" /> Syncing Offline Data...
+            <RefreshCw className="w-3.5 h-3.5 animate-spin" /> Syncing Online Data...
           </motion.div>
         )}
       </AnimatePresence>

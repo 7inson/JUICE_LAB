@@ -149,7 +149,7 @@ export default function NutritionModal({ productId, onClose }: NutritionModalPro
                   <AlertCircle className="w-6 h-6" />
                 </div>
                 <div className="space-y-2 max-w-sm">
-                  <h3 className="font-display font-black text-white text-lg uppercase tracking-tight">Sync Offline</h3>
+                  <h3 className="font-display font-black text-white text-lg uppercase tracking-tight">Sync Error</h3>
                   <p className="text-xs text-stone-400 leading-relaxed font-sans">{error}</p>
                 </div>
                 <button
