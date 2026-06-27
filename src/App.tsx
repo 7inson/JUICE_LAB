@@ -311,9 +311,9 @@ export default function App() {
                 <Instagram className="w-4 h-4" />
                 JuiceLab_0108
               </a>
-              <a href="tel:9826070108" className="flex items-center gap-2 text-sm font-bold font-mono text-[#F5F5F5] hover:text-[#FF3E00] transition-colors">
+              <a href="tel:98264070108" className="flex items-center gap-2 text-sm font-bold font-mono text-[#F5F5F5] hover:text-[#FF3E00] transition-colors">
                 <Phone className="w-4 h-4" />
-                9826070108
+                98264070108
               </a>
             </div>
           </div>

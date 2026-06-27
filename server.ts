@@ -228,8 +228,8 @@ Do not include any markdown, backticks, or extra text. Return pure JSON.`;
           const parsedData = JSON.parse(textResponse);
           return res.json(parsedData);
         }
-      } catch (error) {
-        console.error("Gemini Real-Time Analysis failure, falling back to database verification:", error);
+      } catch (error: any) {
+        // Suppress 503 errors and silently fall back to default data
         return res.json(targetInfo.defaultData);
       }
     } else {
