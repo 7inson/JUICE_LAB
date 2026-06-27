@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, ShoppingBag, Truck, Thermometer, ShieldCheck, RefreshCw, X, ArrowRight, ExternalLink, Instagram, Phone, WifiOff } from 'lucide-react';
+import { CheckCircle2, ShoppingBag, Truck, Thermometer, ShieldCheck, RefreshCw, X, ArrowRight, ExternalLink, Instagram, Phone, WifiOff, ArrowUp } from 'lucide-react';
 
 import Header from './components/Header';
 import ShopAll from './components/ShopAll';
@@ -26,6 +26,28 @@ export default function App() {
   const [selectedNutritionProductId, setSelectedNutritionProductId] = useState<string | null>(null);
   const [isAdminView, setIsAdminView] = useState(false);
   const [user, setUser] = useState<any>(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      // Show button when scrolled past the first fold (approx 400px)
+      if (window.scrollY > 400) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
 
   React.useEffect(() => {
@@ -428,6 +450,21 @@ export default function App() {
         onClose={() => setSelectedNutritionProductId(null)}
       />
 
+      {/* Floating Back to Top Button */}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 w-12 h-12 bg-stone-900 border border-white/10 rounded-full flex items-center justify-center text-[#FF3E00] hover:bg-stone-800 transition-colors z-40 shadow-2xl cursor-pointer hover:border-white/30"
+            aria-label="Back to top"
+          >
+            <ArrowUp className="w-5 h-5" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
